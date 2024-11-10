@@ -7,9 +7,9 @@ export class TodoRepository {
 
   private constructor() {
     this.items = [
-      { id: 1, title: 'First item', description: 'This is the first item' },
-      { id: 2, title: 'Second item', description: 'This is the second item' },
-      { id: 3, title: 'Third item', description: 'This is the third item' }
+      { id: 1, title: 'Agenda', description: 'Personalizada' },
+      { id: 2, title: 'Poleron', description: 'Con estampado personalizado' },
+      { id: 3, title: 'Vela', description: 'Personalizada' }
     ]
   };
   static getInstance(): TodoRepository {
