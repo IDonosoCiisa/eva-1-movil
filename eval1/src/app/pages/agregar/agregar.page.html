@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>agregar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Agregar Productos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <br>
+  <ion-input label="Nombre producto" label-placement="floating" fill="outline" placeholder="Nombre producto"></ion-input>
+  <ion-input label="Descripción" label-placement="floating" fill="outline" placeholder="Descripción producto"></ion-input>
+  <ion-input label="precio" label-placement="floating" fill="outline" placeholder="Precio"></ion-input>
+  <ion-button (click)="goToListar()">Agregar</ion-button>
+</ion-content>
