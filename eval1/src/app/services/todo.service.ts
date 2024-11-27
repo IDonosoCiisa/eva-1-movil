@@ -14,8 +14,8 @@ export class TodoService {
     return this.gateway.getAll();
   }
 
-  add(title: string, description: string): Observable<TodoItem> {
-    return this.gateway.add(title, description);
+  add(title: string, description: string, avatar: string | undefined): Observable<TodoItem> {
+    return this.gateway.add(title, description, avatar);
   }
 
   remove(id: number): Observable<void> {

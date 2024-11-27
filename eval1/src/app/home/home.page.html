@@ -12,7 +12,7 @@
     <ion-input [(ngModel)]="newTodoDescription" placeholder="Descripción" class="input-field"></ion-input>
     <ion-button (click)="addTodo()" class="add-button">Añadir Perrito</ion-button>
     </div>
-    <h2> Tareas actuales </h2>
+    <h2> Listados Perritos </h2>
     <div *ngFor="let todo of todos | async" class="todo-item">
       <p>Raza: {{ todo.title }} {{ todo.description }}</p>
       <p>Descripción: {{ todo.description }}</p>
