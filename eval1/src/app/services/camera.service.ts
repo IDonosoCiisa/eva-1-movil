@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Camera, CameraResultType, CameraSource, Photo} from '@capacitor/camera';
+import {Geolocation} from "@capacitor/geolocation";
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,8 @@ export class CameraService {
     });
   }
   async checkCameraPermissions(): Promise<boolean> {
-    const permissions = await Camera.checkPermissions();
-    if (permissions.photos !== 'granted') await Camera.requestPermissions();
+    let permissions = await Camera.checkPermissions();
+    if (permissions.photos !== 'granted') permissions = await Camera.requestPermissions();
     return permissions.photos === 'granted';
   }
 }
