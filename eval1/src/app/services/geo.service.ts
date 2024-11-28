@@ -4,7 +4,7 @@ import {Geolocation, Position} from "@capacitor/geolocation";
 @Injectable({
   providedIn: 'root',
 })
-export class CameraService {
+export class GeoService {
   constructor() {}
 
   async getLocalization(): Promise<Position> {
