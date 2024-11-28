@@ -15,4 +15,9 @@ export class CameraService {
       source: CameraSource.Camera,
     });
   }
+  async checkCameraPermissions(): Promise<boolean> {
+    const permissions = await Camera.checkPermissions();
+    if (permissions.photos !== 'granted') await Camera.requestPermissions();
+    return permissions.photos === 'granted';
+  }
 }

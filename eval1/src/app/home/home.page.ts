@@ -33,13 +33,16 @@ export class HomePage implements OnInit {
   }
 
   async addTodo() {
+    let permissions = await this.cameraService.checkCameraPermissions();
     if (this.newTodoTitle && this.newTodoDescription) {
-      this.newTodoPhoto = await this.takePhoto();
-      this.todoService.add(this.newTodoTitle, this.newTodoDescription, this.newTodoPhoto).subscribe(() => {
-        this.loadTodos();
-      });
-      this.newTodoTitle = '';
-      this.newTodoDescription = '';
+      if (permissions) {
+        this.newTodoPhoto = await this.takePhoto();
+        this.todoService.add(this.newTodoTitle, this.newTodoDescription, this.newTodoPhoto).subscribe(() => {
+          this.loadTodos();
+        });
+        this.newTodoTitle = '';
+        this.newTodoDescription = '';
+      }
     }
   }
 
