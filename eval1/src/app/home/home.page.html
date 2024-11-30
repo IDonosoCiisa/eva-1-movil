@@ -15,6 +15,7 @@
     <div *ngFor="let todo of todos | async" class="todo-item">
       <p>Raza: {{ todo.title }}</p>
       <p>Descripción: {{ todo.description }}</p>
+      <p>Dirección: {{ todo.direction }}</p>
       <ion-img [src]="todo.avatar" class="todo-image"></ion-img>
       <ion-button (click)="removeTodo(todo.id)">Remove</ion-button>
     </div>

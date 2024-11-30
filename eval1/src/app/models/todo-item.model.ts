@@ -3,4 +3,5 @@ export interface TodoItem {
   title: string;
   description: string;
   avatar: string;
+  direction: string;
 }

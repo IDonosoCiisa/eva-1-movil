@@ -22,8 +22,8 @@ export class TodoGatewayImplementation {
     return this.http.get<TodoItem>(`${this.apiUrl}/${id}`);
   }
 
-  add(title: string, description: string, avatar: string | undefined): Observable<TodoItem> {
-    const newItem = { title, description, avatar};
+  add(title: string, description: string, avatar: string | undefined, direction: string): Observable<TodoItem> {
+    const newItem = { title, description, avatar, direction};
     return this.http.post<TodoItem>(this.apiUrl, newItem);
   }
 

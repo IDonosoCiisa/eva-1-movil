@@ -28,9 +28,9 @@ describe('TodoService Integration', () => {
   });
 
   it('should add a new todo', (done) => {
-    const newTodo: TodoItem = { id: 3, title: 'New Todo', description: 'New Description', avatar: '' };
+    const newTodo: TodoItem = { id: 3, title: 'New Todo', description: 'New Description', avatar: '', direction: ''};
 
-    service.add(newTodo.title, newTodo.description, newTodo.avatar).subscribe(todo => {
+    service.add(newTodo.title, newTodo.description, newTodo.avatar, newTodo.direction).subscribe(todo => {
       expect(todo).toBeTruthy();
       expect(todo.title).toBe(newTodo.title);
       done();
