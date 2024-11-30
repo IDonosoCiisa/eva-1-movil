@@ -21,13 +21,13 @@ export class GeoService {
       throw error; // Lanza el error para que pueda manejarse desde donde se llame
     }
   }
-   // Método para obtener la dirección utilizando OpenStreetMap Nominatim API
+   // para obtener la dirección utilizando OpenStreetMap Nominatim API
    async getAddressFromCoordinates(latitude: number, longitude: number): Promise<string | null> {
     const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
     try {
       const response = await fetch(url);
       const data = await response.json();
-      return data.display_name || 'Dirección no disponible';
+      return data.address.city + ", " + data.address.state  || 'Dirección no disponible';
     } catch (error) {
       console.error('Error al obtener la dirección:', error);
       return null;

@@ -41,7 +41,7 @@ export class HomePage implements OnInit {
     try {
       // Obtiene las coordenadas
       this.location = await this.GeoService.getCurrentPosition();
-    
+
       // Si la ubicación es válida, obtiene la dirección
       if (this.location) {
         this.address = await this.GeoService.getAddressFromCoordinates(
@@ -66,7 +66,7 @@ export class HomePage implements OnInit {
         const currentLocation = this.location
           ? `Lat: ${this.location.latitude}, Lon: ${this.location.longitude}`
           : 'Ubicación no disponible';
-  
+
         const currentAddress = this.address || 'Dirección no disponible';
 
         console.log('Ubicación al agregar todo:', currentLocation);

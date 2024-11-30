@@ -6,12 +6,15 @@
   </ion-header>
 
   <div id="container">
+    <h1> Añadir Perrito </h1>
     <div class="ion-padding-vertical">
     <ion-input [(ngModel)]="newTodoTitle" placeholder="Raza" class="input-field"></ion-input>
     <ion-input [(ngModel)]="newTodoDescription" placeholder="Descripción" class="input-field"></ion-input>
     <ion-button (click)="addTodo()" class="add-button">Añadir Perrito</ion-button>
     </div>
     <h2> Listados Perritos </h2>
+    <h3> Estas conectado desde:</h3>
+    <p>{{ address }}</p>
     <div *ngFor="let todo of todos | async" class="todo-item">
       <p>Raza: {{ todo.title }}</p>
       <p>Descripción: {{ todo.description }}</p>
