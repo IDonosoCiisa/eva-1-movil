@@ -32,7 +32,9 @@
               }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "scripts": [
+              "node_modules/@ionic/pwa-elements/dist/ionicpwaelements/ionicpwaelements.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -107,7 +109,9 @@
               }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "scripts": [
+              "node_modules/@ionic/pwa-elements/dist/ionicpwaelements/ionicpwaelements.js"
+            ]
           },
           "configurations": {
             "ci": {
@@ -126,7 +130,10 @@
     }
   },
   "cli": {
-    "schematicCollections": ["@ionic/angular-toolkit"]
+    "schematicCollections": [
+      "@ionic/angular-toolkit"
+    ],
+    "analytics": false
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

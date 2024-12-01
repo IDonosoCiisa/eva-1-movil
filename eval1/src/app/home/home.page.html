@@ -1,25 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Lista de Tareas
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Aplicación de Tareas</ion-title>
+      <ion-title size="large">Aplicación de Perritos</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <ion-input [(ngModel)]="newTodoTitle" placeholder="Título"></ion-input>
-    <ion-input [(ngModel)]="newTodoDescription" placeholder="Descripción"></ion-input>
-    <ion-button (click)="addTodo()">Añadir Tarea</ion-button>
-    <h2> Tareas actuales </h2>
-    <div *ngFor="let todo of todos">
-      <p>{{ todo.title }}: {{ todo.description }}</p>
+    <h1> Añadir Perrito </h1>
+    <div class="ion-padding-vertical">
+    <ion-input [(ngModel)]="newTodoTitle" placeholder="Raza" class="input-field"></ion-input>
+    <ion-input [(ngModel)]="newTodoDescription" placeholder="Descripción" class="input-field"></ion-input>
+    <ion-button (click)="addTodo()" class="add-button">Añadir Perrito</ion-button>
+    </div>
+    <h2> Listados Perritos </h2>
+    <h3> Estas conectado desde:</h3>
+    <p>{{ address }}</p>
+    <div *ngFor="let todo of todos | async" class="todo-item">
+      <p>Raza: {{ todo.title }}</p>
+      <p>Descripción: {{ todo.description }}</p>
+      <ion-img [src]="todo.avatar" class="todo-image"></ion-img>
       <ion-button (click)="removeTodo(todo.id)">Remove</ion-button>
     </div>
   </div>
