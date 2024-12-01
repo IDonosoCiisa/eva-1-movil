@@ -27,7 +27,7 @@ export class GeoService {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      return data.address.city + ", " + data.address.state  || 'Dirección no disponible';
+      return data.address.suburb + ", " + data.address.state  || 'Dirección no disponible';
     } catch (error) {
       console.error('Error al obtener la dirección:', error);
       return null;
