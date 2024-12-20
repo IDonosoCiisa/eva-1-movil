@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { TodoItem } from '../../models/todo-item.model';
-
+import { StorageService } from '../../services/storage.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +12,7 @@ export class TodoGatewayImplementation {
 
   private apiUrl = `${environment.todoApiUrl}/dogs`
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private storage: StorageService) {}
 
   getAll(): Observable<TodoItem[]> {
     return this.http.get<TodoItem[]>(this.apiUrl);

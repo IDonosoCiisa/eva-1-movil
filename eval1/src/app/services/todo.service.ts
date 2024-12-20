@@ -22,8 +22,4 @@ export class TodoService {
     console.log('Removing todo with id', id);
     return this.gateway.remove(id);
   }
-
-  get(id: number): Observable<TodoItem> {
-    return this.gateway.get(id);
-  }
 }

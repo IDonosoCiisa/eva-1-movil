@@ -1,0 +1,17 @@
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title size="large">Register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <h1>Register</h1>
+    <ion-input [(ngModel)]="registerEmail" placeholder="Email" class="input-field"></ion-input>
+    <ion-input [(ngModel)]="registerPassword" placeholder="Password" type="password" class="input-field"></ion-input>
+    <ion-input [(ngModel)]="registerFirstName" placeholder="First Name"  class="input-field"></ion-input>
+    <ion-input [(ngModel)]="registerLastName" placeholder="Last Name"  class="input-field"></ion-input>
+
+    <ion-button (click)="register()" class="register-button">Register</ion-button>
+  </div>
+</ion-content>
