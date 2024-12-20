@@ -6,6 +6,7 @@
   </ion-header>
 
   <div id="container">
+    <ion-button (click)="logout()" slot="end">Logout</ion-button>
     <h1> Añadir Perrito </h1>
     <div class="ion-padding-vertical">
     <ion-input [(ngModel)]="newTodoTitle" placeholder="Raza" class="input-field"></ion-input>

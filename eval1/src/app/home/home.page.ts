@@ -7,6 +7,9 @@ import {AsyncPipe, NgForOf} from "@angular/common";
 import {Observable} from "rxjs";
 import {CameraService} from "../services/camera.service";
 import {GeoService} from '../services/geo.service';
+import {StorageService} from '../services/storage.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -25,7 +28,7 @@ export class HomePage implements OnInit {
   location: { latitude: number; longitude: number } | null = null;
   address: string | null = null;
 
-  constructor(private todoService: TodoService, private cameraService: CameraService, private GeoService: GeoService
+  constructor(private router : Router, private todoService: TodoService, private cameraService: CameraService, private GeoService: GeoService, private storageService: StorageService
   ) {}
 
   ngOnInit() {
@@ -91,5 +94,10 @@ export class HomePage implements OnInit {
     this.todoService.remove(id).subscribe(() => {
       this.loadTodos();
     });
+  }
+  async logout() {
+    await this.storageService.logout();
+    await this.router.navigate(['/auth']);
+
   }
 }

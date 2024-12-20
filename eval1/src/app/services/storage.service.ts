@@ -28,28 +28,6 @@ export class StorageService {
     }
   }
 
-  async remove(key: string){
-    if(this._storage){
-      await this._storage.remove(key);
-    }
-  }
-
-  async isEmpty(){
-    if(this._storage){
-      const keys = await this._storage.keys();
-      return keys.length === 0;
-    }
-    return true;
-  }
-
-  async checkIfUserExists(email:string){
-    if(this._storage){
-      const users: UserModel[] = await this._storage.get('users') || [];
-      return users.some(u => u.email === email);
-    }
-    return false;
-  }
-
   public async registerUser(email: string, password: string, firstName: string, lastName: string): Promise<boolean> {
     if (this._storage) {
       const users: UserModel[] = await this._storage.get('users') || [];
@@ -71,9 +49,8 @@ export class StorageService {
     const user = await this.get('currentUser');
     return !!user;
   }
-  async savePerritos(perritos: TodoItem[]): Promise<void> {
-    if (this._storage) {
-      await this._storage.set('perritos', perritos);
-    }
+
+  async logout() {
+    await this.set('currentUser', null);
   }
 }
