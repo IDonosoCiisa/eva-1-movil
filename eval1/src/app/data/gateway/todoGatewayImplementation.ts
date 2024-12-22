@@ -14,8 +14,16 @@ export class TodoGatewayImplementation {
 
   constructor(private http: HttpClient, private storage: StorageService) {}
 
-  getAll(): Observable<TodoItem[]> {
-    return this.http.get<TodoItem[]>(this.apiUrl);
+  async getAll(): Promise<TodoItem[]> {
+    const items = await this.http.get<TodoItem[]>(this.apiUrl).toPromise();
+    const storagedItems: TodoItem[] = [];
+    // @ts-ignore
+    items.forEach(item => {
+      const todoItem = { id: item.id, title: item.title, description: item.description, avatar: item.avatar };
+      storagedItems.push(todoItem);
+    });
+    await this.storage.set('todos', storagedItems);
+    return storagedItems;
   }
 
   get(id: number): Observable<TodoItem> {
@@ -27,8 +35,10 @@ export class TodoGatewayImplementation {
     return this.http.post<TodoItem>(this.apiUrl, newItem);
   }
 
-  remove(id: number): Observable<void> {
+  async remove(id: number): Promise<void> {
     console.log('Removing todo with id', id);
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    await this.http.delete<void>(`${this.apiUrl}/${id}`).toPromise();
+    const todos: TodoItem[] = await this.storage.get('todos');
+    await this.storage.set('todos', todos);
   }
 }

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class TodoService {
   constructor(private gateway: TodoGatewayImplementation) {}
 
-  getAll(): Observable<TodoItem[]> {
+  getAll(): Promise<TodoItem[]> {
     console.log('Getting all todos');
     return this.gateway.getAll();
   }
@@ -18,7 +18,7 @@ export class TodoService {
     return this.gateway.add(title, description, avatar);
   }
 
-  remove(id: number): Observable<void> {
+  remove(id: number): Promise<void> {
     console.log('Removing todo with id', id);
     return this.gateway.remove(id);
   }

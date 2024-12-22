@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
   // @ts-ignore
-  todos: Observable<TodoItem[]> = [];
+  todos: Promise<TodoItem[]> = [];
   newTodoTitle: string = '';
   newTodoDescription: string = '';
   newTodoPhoto: string | undefined = '';
@@ -91,7 +91,7 @@ export class HomePage implements OnInit {
   }
 
   removeTodo(id: number) {
-    this.todoService.remove(id).subscribe(() => {
+    this.todoService.remove(id).then(() => {
       this.loadTodos();
     });
   }
